@@ -11,6 +11,7 @@ public class Player {
 	double def;//defense level
 	int x;//x coordinates
 	int y;//y coordinates
+	Map map;//the map that the player in
 	List<Buff> buffList = new ArrayList<>();
 	public Player(){
 		name = "unknown";
