@@ -41,16 +41,7 @@ public class Player {
 	public void attack(Player p){
 		
 	}
-	public void moveUp(){
-		
-	}
-	public void moveDown(){
-		
-	}
-	public void moveLeft(){
-		
-	}
-	public void moveRight(){
+	public void move(boolean up, boolean down,boolean right,boolean left){
 		
 	}
 	
