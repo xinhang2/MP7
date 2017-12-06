@@ -9,26 +9,33 @@ public class Client {
 	/**
 	 * let the game run
 	 */
-	public Client(){
+	public Client(Player p1,Player p2, Map map){
 		end = false;
+		this.p1 = p1;
+		this.p2 = p2;
+		this.m = map;
 	}
 public void launch(){	
 	while(!end){
-		makeMove();
+		p1.makeMove();
 	}
 }
 /**
  * ask the player1 or player2 to make move
  */
-public void makeMove(){
-	
-}
 public static void main(String[]args){
-	Client c = new Client();
-	c.p1 = new Player(1,1);
-	c.p2 = new Player(1,3);
-	c.m = new Map(c.p1,c.p2);
-	c.launch();
 	
+	Player p2 = new Player(1,3);
+	Player p1 = new Player(1,1);
+	p1.setToken("1");
+	p2.setToken("2");
+	Map m = new Map(p1,p2);
+	Client c = new Client(p1,p2,m);
+	c.m.print();
+	//System.out.print("xxxxx");
+	p1.move(1);//player 1 move up
+	p2.move(3);
+	System.out.println();
+	c.m.print();
 }
 }

@@ -6,6 +6,7 @@ public class Player {
 	public static final int D_X = 0;//default x
 	public static final int D_Y = 0;//default y
 	String name;//players name
+	String token;//x,o,*,$
 	double hp;//hit points
 	double atk;//attack level
 	double def;//defense level
@@ -20,6 +21,14 @@ public class Player {
 		def = D_DEF;
 		x = D_X;
 		y = D_Y;
+	}
+	public Player(Player p){
+		name = p.name;
+		hp = p.hp;
+		
+	}
+	public void setToken(String t){
+		token = t;
 	}
 	public Player(final int x, final int y){
 		name = "unknown";
@@ -41,8 +50,44 @@ public class Player {
 	public void attack(Player p){
 		
 	}
-	public void move(boolean up, boolean down,boolean right,boolean left){
-		
+	/** move one step
+	 * m = 3 move up
+	 * m = 4 move down
+	 * m = 1 move right
+	 * m = 2 move left
+	 * @param m
+	 */
+	public void move(int m) {
+		int oldx = x;
+		int oldy = y;
+		switch (m) {
+		case 1:// move right
+			x++;
+			break;
+		case 2:// move left
+			x--;
+
+			break;
+		case 3:// move up
+			y++;
+			break;
+		case 4:// move down
+			y--;
+			break;
+		}
+		map.playerGrid[x][y] = map.playerGrid[oldx][oldy];
+		map.playerGrid[oldx][oldy] = null;
+		if (map.buffGrid[x][y] != null) {
+			buffList.add(map.buffGrid[x][y]);
+			map.buffGrid[x][y] = null;
+		}
 	}
-	
+
+	/**
+	 * ask the person to make move scanner class needed
+	 */
+	public void makeMove() {
+          
+	}
+
 }
