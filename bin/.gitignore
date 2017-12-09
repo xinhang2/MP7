@@ -1,9 +1,5 @@
-/main/
-/Character.class
+/Buff$buffType.class
+/Buff.class
 /Client.class
-/Weapon.class
 /Map.class
 /Player.class
-/State.class
-/Buff.class
-/Buff$buffType.class

@@ -35,6 +35,7 @@ public class Map {
     * "x" represent player1 on it
     * "o" represent player2 on it
     * "#" represent no players on it
+    * "@" represent buff on it
     */
    public void print(){
 	   for(int y = HEIGHT-1;y>=0;y--){
