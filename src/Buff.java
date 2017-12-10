@@ -6,11 +6,11 @@ public class Buff {
     	 ATK_B, ATK_DB, DEF_B, DEF_DB
      }
      buffType bt;
-     int duration;//after number of steps disappear
+     //int duration;//after number of steps disappear
      public Buff(){
     	 int pick = new Random().nextInt(buffType.values().length);
     	 bt = buffType.values()[pick];
-    	 duration = new Random().nextInt(MAX_DU);
+    	 //duration = new Random().nextInt(MAX_DU);
      }
      
 }

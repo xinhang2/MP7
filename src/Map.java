@@ -1,7 +1,7 @@
 
 public class Map {
-   static final int HEIGHT = 10;
-   static final int WIDTH = 10;
+   static final int HEIGHT = 6;
+   static final int WIDTH = 6;
    static final double P_BUFF = 0.3;//the possibility of a single grid has buff
    Player[][]playerGrid;
    Buff[][]buffGrid;
@@ -23,11 +23,16 @@ public class Map {
 	   playerGrid[p2.x][p2.y] = p2;
 	   for(int i=0;i<WIDTH;i++){
 		   for(int j = 0;j<HEIGHT;j++){
-			   if(Math.random()<=P_BUFF){
+			   
+			   if(Math.random()<=P_BUFF&&(i!=p1.x||j!=p1.y||i!=p2.x||j!=p2.y)){
 				   buffGrid[i][j] = new Buff();
 			   }
 		   }
 	   }
+   }
+   public void showScoreBoard(){
+	   p1.showScore();
+	   p2.showScore();
    }
    
    /**
@@ -52,5 +57,8 @@ public class Map {
 			   }
 		   }
 	   }
+	   System.out.println("*************************");
+	   showScoreBoard();
+	   System.out.println("*************************");
    }
 }
