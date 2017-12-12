@@ -131,7 +131,7 @@ public class Player {
 			System.out.println(name+" surrenders!! GG!!");
 			return;
 		case "d":// move right
-			if(x<Map.WIDTH) {
+			if(x<Map.WIDTH-1) {
 			if(map.playerGrid[x+1][y]!=null) {
 				System.out.println("You can not eat another player!");
 				return;
@@ -150,7 +150,7 @@ public class Player {
 
 			break;
 		case "w":// move up
-			if(y<Map.HEIGHT) {
+			if(y<Map.HEIGHT-1) {
 			if(map.playerGrid[x][y+1]!=null) {
 				System.out.println("You can not eat another player!");
 				return;
