@@ -7,6 +7,8 @@ public class Map {
    Buff[][]buffGrid;
    Player p1;
    Player p2;
+   boolean p1s;
+   boolean p2s;
    /**
     * auto generating buffs
     * set playerGrid to height * weight matrix
@@ -15,6 +17,8 @@ public class Map {
    public Map(Player p1,Player p2){
 	   this.p1 = p1;
 	   this.p2 = p2;
+	   p1s = false;
+	   p2s = false;
 	   p1.map = this;
 	   p2.map = this;
 	   playerGrid = new Player[WIDTH][HEIGHT];
@@ -42,6 +46,22 @@ public class Map {
     * "#" represent no players on it
     * "@" represent buff on it
     */
+   public void printM() {
+	   for(int y = HEIGHT-1;y>=0;y--){
+		   for(int x = 0;x<WIDTH;x++){
+			   if(playerGrid[x][y]!=null){
+				   System.out.print(playerGrid[x][y].token+" ");//with player standing
+			   }else if(buffGrid[x][y]!=null){
+				   System.out.print("@ ");//has buff
+			   }else{
+				   System.out.print("# ");//the empty grid
+			   }
+			   if(x==WIDTH-1){
+				   System.out.println();
+			   }
+		   }
+	   }
+   }
    public void print(){
 	   for(int y = HEIGHT-1;y>=0;y--){
 		   for(int x = 0;x<WIDTH;x++){

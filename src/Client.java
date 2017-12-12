@@ -14,6 +14,9 @@ public class Client {
 		this.m = map;
 	}
 	public boolean end(){
+		if(p1.s||p2.s) {
+			return true;
+		}
 		for(Buff []b:m.buffGrid){
 			for(Buff a :b){
 				if(a!=null)
@@ -23,7 +26,8 @@ public class Client {
 		return true;
 	}
 	
-public void launch(){	
+public void launch(){
+	m.printM();
 	p1.nameIni();
 	p1.tokenIni();
 	p2.nameIni();
@@ -33,9 +37,9 @@ public void launch(){
 		if(!end())
 		p2.makeMove();
 	}
-	if(p1.score>p2.score)
-		System.out.println(p1.name + "WINS!!");
-	else if(p1.score<p2.score)
+	if(p1.score>p2.score||p2.s==true)
+		System.out.println(p1.name + " WINS!!");
+	else if(p1.score<p2.score||p1.s==true)
 		System.out.println(p2.name+" WINS!!");
 	else
 		System.out.print("DRAW");
@@ -53,7 +57,7 @@ public static void main(String[]args){
 	Map m = new Map(p1,p2);
 	Client c = new Client(p1,p2,m);
 	p1.setName("Player 1");
-	c.m.print();
+	//c.m.print();
 	//System.out.print("xxxxx");
 	/*p1.move(1);//player 1 move right
 	p2.move(3);//player 2 move up

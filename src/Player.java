@@ -16,6 +16,7 @@ public class Player {
 	int y;//y coordinates
 	Map map;//the map that the player in
 	int score;//current score for this player
+	boolean s;
 	public enum key{
 		a,w,s,d
 	}
@@ -41,6 +42,7 @@ public class Player {
 	}
 	public Player(final int x, final int y){
 		id++;
+		s = false;
 		n = id;
 		name = "unknown";
 		hp = D_HP;
@@ -124,20 +126,49 @@ public class Player {
 		int oldx = x;
 		int oldy = y;
 		switch (m) {
+		case "gg"://surrender
+			s = true;
+			System.out.println(name+" surrenders!! GG!!");
+			return;
 		case "d":// move right
+			if(x<Map.WIDTH) {
+			if(map.playerGrid[x+1][y]!=null) {
+				System.out.println("You can not eat another player!");
+				return;
+			}
+			}
 			x++;
 			break;
 		case "a":// move left
-			x--;
+		    if(x>0) {
+			if(map.playerGrid[x-1][y]!=null) {
+				System.out.println("You can not eat another player!");
+				return;
+			}
+		    }
+				x--;
 
 			break;
 		case "w":// move up
+			if(y<Map.HEIGHT) {
+			if(map.playerGrid[x][y+1]!=null) {
+				System.out.println("You can not eat another player!");
+				return;
+			}
+			}
 			y++;
 			break;
 		case "s":// move down
+			if(y>0) {
+			if(map.playerGrid[x][y-1]!=null) {
+				System.out.println("You can not eat another player!");
+				return;
+			}
+			}
 			y--;
 			break;
 		}
+		
 		if(x>=Map.WIDTH)
 			x = Map.WIDTH-1;
 		if(x<0)
@@ -146,12 +177,14 @@ public class Player {
 			y = Map.HEIGHT-1;
 		if(y<0)
 			y = 0;
+		
 		//in case that the position is beyond the border
 		//System.out.println(oldx);
 		//System.out.println(oldy);
 		if(x!=oldx||y!=oldy){
 		map.playerGrid[x][y] = map.playerGrid[oldx][oldy];
 		map.playerGrid[oldx][oldy] = null;
+		
 		}
 		if (map.buffGrid[x][y] != null) {
 			System.out.println(name+" find a buff!!!");
@@ -174,7 +207,7 @@ public class Player {
          "\n"+"w.move up"+"\n"+"s.move down");
         	Scanner s = new Scanner(System.in);
         	String code = s.next();
-        	if(!code.equals("a")&&!code.equals("s")&&!code.equals("d")&&!code.equals("w")){
+        	if(!code.equals("a")&&!code.equals("s")&&!code.equals("d")&&!code.equals("w")&&!code.equals("gg")){
         		System.out.println("you must enter valid move!");
         	}else{
         	move = true;
